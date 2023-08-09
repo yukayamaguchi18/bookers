@@ -13,6 +13,14 @@
 <% end %>
 
 <h2><strong>New book</strong></h2>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
 
